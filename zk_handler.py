@@ -1,10 +1,10 @@
-from zk import ZK
+from pyzk.zkmodules.zkbase import ZK
 
 def fetch_attendance_records():
-    zk = ZK("192.168.192.100", port=4370, timeout=5)  # VPN IP
+    zk = ZK("0.0.0.0", port=4370, timeout=5, force_udp=False)
     conn = zk.connect()
     conn.disable_device()
-    records = conn.get_attendance()
+    attendance = conn.get_attendance()
     conn.enable_device()
     conn.disconnect()
-    return [{"user_id": r.user_id, "timestamp": r.timestamp} for r in records]
+    return [{"user_id": r.user_id, "timestamp": r.timestamp} for r in attendance]
