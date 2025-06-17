@@ -1,4 +1,4 @@
 fastapi
 uvicorn
-zk
 mysql-connector-python
+git+https://github.com/adrinjalali/pyzk.git
